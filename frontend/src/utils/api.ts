@@ -20,6 +20,22 @@ const api = axios.create({
   },
 });
 
+// Interceptor für Fehlerbehandlung
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // Wenn die Antwort ein Fehler ist, logge es und re-throw
+    if (error.response) {
+      console.error('API Error:', error.response.status, error.response.data);
+    } else if (error.request) {
+      console.error('API Request Error:', error.request);
+    } else {
+      console.error('API Error:', error.message);
+    }
+    return Promise.reject(error);
+  }
+);
+
 export const apiClient = {
   // Resource Types
   getResourceTypes: async (): Promise<ResourceType[]> => {

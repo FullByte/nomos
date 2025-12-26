@@ -47,6 +47,11 @@ export default function UsedNamesList() {
   };
 
   const handleExport = () => {
+    if (!Array.isArray(names) || names.length === 0) {
+      alert('Keine Namen zum Exportieren vorhanden');
+      return;
+    }
+    
     const csv = [
       ['Name', 'Ressourcentyp', 'Umgebung', 'Cloud-Provider', 'Erstellt am'].join(','),
       ...names.map(n => [
@@ -261,7 +266,7 @@ export default function UsedNamesList() {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {names.map((name) => (
+              {Array.isArray(names) && names.map((name) => (
                 <tr key={name.id}>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <code className="text-sm font-mono text-gray-900">{name.name}</code>

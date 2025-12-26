@@ -54,7 +54,7 @@ export default function GuidancePanel({ resourceType, cloudProvider }: GuidanceP
           <strong>Erlaubte Zeichen:</strong> {bestPractice.allowedChars}
         </div>
         <div>
-          <strong>Empfohlene Komponenten:</strong> {bestPractice.recommendedComponents.join(', ')}
+          <strong>Empfohlene Komponenten:</strong> {Array.isArray(bestPractice.recommendedComponents) ? bestPractice.recommendedComponents.join(', ') : 'N/A'}
         </div>
         <div>
           <strong>Trennzeichen:</strong> "{bestPractice.separator}"
@@ -62,7 +62,7 @@ export default function GuidancePanel({ resourceType, cloudProvider }: GuidanceP
         <div>
           <strong>Groß-/Kleinschreibung:</strong> {bestPractice.caseStyle}
         </div>
-        {bestPractice.examples && bestPractice.examples.length > 0 && (
+        {Array.isArray(bestPractice.examples) && bestPractice.examples.length > 0 && (
           <div>
             <strong>Beispiele:</strong>
             <ul className="list-disc list-inside mt-1">
