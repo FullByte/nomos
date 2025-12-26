@@ -5,8 +5,8 @@ nixPkgs = ["nodejs_18", "npm-9_x"]
 cmds = ["npm install"]
 
 [phases.build]
-cmds = ["npm run build"]
+cmds = ["cd frontend && npm run build"]
 
 [start]
-cmd = "npx serve -s dist -l $PORT"
+cmd = "cd frontend && npx serve -s dist -l $PORT"
 
