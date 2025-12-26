@@ -1,0 +1,54 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState } from 'react';
+import NameGenerator from './NameGenerator';
+import NameValidator from './NameValidator';
+import ConfigManager from './ConfigManager';
+import UsedNamesList from './UsedNamesList';
+import ApiDocumentation from './ApiDocumentation';
+import ApiKeyManager from './ApiKeyManager';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useI18n } from '../i18n/context';
+export default function Layout({ children }) {
+    const [currentView, setCurrentView] = useState('home');
+    const { t } = useI18n();
+    const renderView = () => {
+        switch (currentView) {
+            case 'generate':
+                return _jsx(NameGenerator, {});
+            case 'validate':
+                return _jsx(NameValidator, {});
+            case 'configs':
+                return _jsx(ConfigManager, {});
+            case 'names':
+                return _jsx(UsedNamesList, {});
+            case 'api-docs':
+                return _jsx(ApiDocumentation, {});
+            case 'api-keys':
+                return _jsx(ApiKeyManager, {});
+            default:
+                return children || (_jsxs("div", { className: "max-w-7xl mx-auto space-y-6", children: [_jsx("div", { className: "bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-lg p-8 text-white relative overflow-hidden", children: _jsxs("div", { className: "flex items-center space-x-6 mb-4", children: [_jsx("img", { src: "/nomos.png", alt: "Nomos", className: "h-24 w-24 object-contain drop-shadow-lg" }), _jsxs("div", { children: [_jsx("h1", { className: "text-4xl font-bold mb-3", children: t('home.title') }), _jsx("p", { className: "text-xl mb-2 text-blue-100", children: t('home.subtitle') }), _jsx("p", { className: "text-blue-100", children: t('home.description') })] })] }) }), _jsxs("div", { className: "bg-white rounded-lg shadow p-6", children: [_jsx("h2", { className: "text-2xl font-bold text-gray-900 mb-4", children: t('home.bestPractices.title') }), _jsx("p", { className: "text-gray-700 mb-6", children: t('home.bestPractices.intro') }), _jsxs("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4", children: [_jsxs("div", { className: "p-4 bg-blue-50 rounded-lg border border-blue-200", children: [_jsx("h3", { className: "font-semibold text-blue-900 mb-2", children: t('home.bestPractices.principles.consistency.title') }), _jsx("p", { className: "text-sm text-blue-800", children: t('home.bestPractices.principles.consistency.desc') })] }), _jsxs("div", { className: "p-4 bg-green-50 rounded-lg border border-green-200", children: [_jsx("h3", { className: "font-semibold text-green-900 mb-2", children: t('home.bestPractices.principles.clarity.title') }), _jsx("p", { className: "text-sm text-green-800", children: t('home.bestPractices.principles.clarity.desc') })] }), _jsxs("div", { className: "p-4 bg-yellow-50 rounded-lg border border-yellow-200", children: [_jsx("h3", { className: "font-semibold text-yellow-900 mb-2", children: t('home.bestPractices.principles.length.title') }), _jsx("p", { className: "text-sm text-yellow-800", children: t('home.bestPractices.principles.length.desc') })] }), _jsxs("div", { className: "p-4 bg-purple-50 rounded-lg border border-purple-200", children: [_jsx("h3", { className: "font-semibold text-purple-900 mb-2", children: t('home.bestPractices.principles.characters.title') }), _jsx("p", { className: "text-sm text-purple-800", children: t('home.bestPractices.principles.characters.desc') })] }), _jsxs("div", { className: "p-4 bg-indigo-50 rounded-lg border border-indigo-200", children: [_jsx("h3", { className: "font-semibold text-indigo-900 mb-2", children: t('home.bestPractices.principles.structure.title') }), _jsx("p", { className: "text-sm text-indigo-800", children: t('home.bestPractices.principles.structure.desc') })] })] })] }), _jsxs("div", { className: "bg-white rounded-lg shadow p-6", children: [_jsx("h2", { className: "text-2xl font-bold text-gray-900 mb-4", children: t('home.tips.title') }), _jsx("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [0, 1, 2, 3, 4, 5].map((index) => (_jsxs("div", { className: "flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200", children: [_jsx("div", { className: "flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3", children: index + 1 }), _jsxs("div", { children: [_jsx("h3", { className: "font-semibold text-gray-900 mb-1", children: t(`home.tips.items.${index}.title`) }), _jsx("p", { className: "text-sm text-gray-600", children: t(`home.tips.items.${index}.desc`) })] })] }, index))) })] }), _jsxs("div", { className: "bg-white rounded-lg shadow p-6", children: [_jsx("h2", { className: "text-2xl font-bold text-gray-900 mb-4", children: t('home.workflow.title') }), _jsx("div", { className: "space-y-4", children: [0, 1, 2, 3, 4, 5, 6].map((index) => (_jsxs("div", { className: "flex items-start p-4 bg-gradient-to-r from-gray-50 to-white rounded-lg border border-gray-200", children: [_jsx("div", { className: "flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg mr-4", children: t(`home.workflow.steps.${index}.step`) }), _jsxs("div", { className: "flex-1", children: [_jsx("h3", { className: "font-semibold text-gray-900 mb-1", children: t(`home.workflow.steps.${index}.title`) }), _jsx("p", { className: "text-sm text-gray-600", children: t(`home.workflow.steps.${index}.desc`) })] })] }, index))) })] }), _jsxs("div", { className: "bg-white rounded-lg shadow p-6", children: [_jsx("h2", { className: "text-2xl font-bold text-gray-900 mb-4", children: t('home.toolFeatures.title') }), _jsx("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4", children: [0, 1, 2, 3, 4, 5].map((index) => (_jsxs("div", { className: "p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border border-blue-200", children: [_jsx("h3", { className: "font-semibold text-blue-900 mb-2", children: t(`home.toolFeatures.features.${index}.title`) }), _jsx("p", { className: "text-sm text-blue-800", children: t(`home.toolFeatures.features.${index}.desc`) })] }, index))) })] }), _jsxs("div", { className: "bg-white rounded-lg shadow p-6", children: [_jsx("h2", { className: "text-2xl font-bold text-gray-900 mb-4", children: t('home.gettingStarted.title') }), _jsx("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4", children: [0, 1, 2].map((index) => (_jsxs("div", { className: "p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg border border-green-200", children: [_jsx("h3", { className: "font-semibold text-green-900 mb-2 text-lg", children: t(`home.gettingStarted.steps.${index}.title`) }), _jsx("p", { className: "text-sm text-green-800 mb-4", children: t(`home.gettingStarted.steps.${index}.desc`) }), _jsx("button", { onClick: () => {
+                                                    if (index === 0)
+                                                        setCurrentView('generate');
+                                                    else if (index === 1)
+                                                        setCurrentView('validate');
+                                                    else
+                                                        setCurrentView('configs');
+                                                }, className: "w-full px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 font-medium", children: t(`home.gettingStarted.steps.${index}.action`) })] }, index))) })] })] }));
+        }
+    };
+    return (_jsxs("div", { className: "min-h-screen bg-gray-50", children: [_jsx("nav", { className: "bg-white shadow-sm border-b border-gray-200", children: _jsx("div", { className: "container mx-auto px-4 py-4", children: _jsxs("div", { className: "flex items-center justify-between", children: [_jsxs("div", { className: "flex items-center space-x-3", children: [_jsx("img", { src: "/nomos.png", alt: "Nomos", className: "h-10 w-10 object-contain" }), _jsx("h1", { className: "text-2xl font-bold text-gray-900", children: "Nomos" })] }), _jsxs("div", { className: "flex items-center space-x-4", children: [_jsx(LanguageSwitcher, {}), _jsxs("div", { className: "flex space-x-2", children: [_jsx("button", { onClick: () => setCurrentView('home'), className: `px-3 py-2 rounded-md text-sm font-medium ${currentView === 'home'
+                                                    ? 'bg-blue-500 text-white'
+                                                    : 'text-gray-600 hover:text-gray-900'}`, children: t('nav.home') }), _jsx("button", { onClick: () => setCurrentView('generate'), className: `px-3 py-2 rounded-md text-sm font-medium ${currentView === 'generate'
+                                                    ? 'bg-blue-500 text-white'
+                                                    : 'text-gray-600 hover:text-gray-900'}`, children: t('nav.generate') }), _jsx("button", { onClick: () => setCurrentView('validate'), className: `px-3 py-2 rounded-md text-sm font-medium ${currentView === 'validate'
+                                                    ? 'bg-blue-500 text-white'
+                                                    : 'text-gray-600 hover:text-gray-900'}`, children: t('nav.validate') }), _jsx("button", { onClick: () => setCurrentView('configs'), className: `px-3 py-2 rounded-md text-sm font-medium ${currentView === 'configs'
+                                                    ? 'bg-blue-500 text-white'
+                                                    : 'text-gray-600 hover:text-gray-900'}`, children: t('nav.configs') }), _jsx("button", { onClick: () => setCurrentView('names'), className: `px-3 py-2 rounded-md text-sm font-medium ${currentView === 'names'
+                                                    ? 'bg-blue-500 text-white'
+                                                    : 'text-gray-600 hover:text-gray-900'}`, children: t('nav.names') }), _jsx("button", { onClick: () => setCurrentView('api-docs'), className: `px-3 py-2 rounded-md text-sm font-medium ${currentView === 'api-docs'
+                                                    ? 'bg-blue-500 text-white'
+                                                    : 'text-gray-600 hover:text-gray-900'}`, children: t('nav.apiDocs') }), _jsx("button", { onClick: () => setCurrentView('api-keys'), className: `px-3 py-2 rounded-md text-sm font-medium ${currentView === 'api-keys'
+                                                    ? 'bg-blue-500 text-white'
+                                                    : 'text-gray-600 hover:text-gray-900'}`, children: t('nav.apiKeys') })] })] })] }) }) }), _jsx("main", { className: "container mx-auto px-4 py-8", children: renderView() })] }));
+}
