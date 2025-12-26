@@ -38,7 +38,7 @@ export default function NamingConfigurator({
     if (resourceType && cloudProvider) {
       apiClient.getBestPractice(cloudProvider, resourceType)
         .then((bestPractice) => {
-          if (bestPractice) {
+          if (bestPractice && Array.isArray(bestPractice.recommendedComponents)) {
             const newConfig: NamingConfig = {
               name: `${cloudProvider} ${resourceType} Standard`,
               resourceType,
@@ -208,7 +208,7 @@ export default function NamingConfigurator({
           </button>
         </div>
         <div className="space-y-2">
-          {config.components.map((component, index) => (
+          {Array.isArray(config.components) && config.components.map((component, index) => (
             <div key={index} className="flex items-center gap-2 p-2 bg-gray-50 rounded">
               <input
                 type="text"
@@ -235,7 +235,7 @@ export default function NamingConfigurator({
               </button>
             </div>
           ))}
-          {config.components.length === 0 && (
+          {(!Array.isArray(config.components) || config.components.length === 0) && (
             <p className="text-sm text-gray-500">Keine Komponenten definiert</p>
           )}
         </div>

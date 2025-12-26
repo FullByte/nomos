@@ -22,8 +22,13 @@ export default function CloudProviderSelector({
 
   useEffect(() => {
     apiClient.getCloudProviders()
-      .then(setProviders)
-      .catch(console.error)
+      .then((data) => {
+        setProviders(Array.isArray(data) ? data : []);
+      })
+      .catch((error) => {
+        console.error('Fehler beim Laden der Cloud Providers:', error);
+        setProviders([]);
+      })
       .finally(() => setLoading(false));
   }, []);
 

@@ -120,7 +120,7 @@ export default function NameGenerator() {
               }}
             />
 
-            {config && config.components.length > 0 && (
+            {config && Array.isArray(config.components) && config.components.length > 0 && (
               <div className="mt-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('generator.componentValues')}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -164,7 +164,7 @@ export default function NameGenerator() {
               <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-md">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">{t('generator.generatedNames')}</h3>
                 <div className="space-y-2">
-                  {generatedNames.names.map((name, index) => (
+                  {Array.isArray(generatedNames.names) && generatedNames.names.map((name, index) => (
                     <div key={index} className="flex items-center justify-between p-3 bg-white rounded border border-gray-200">
                       <code className="text-lg font-mono text-gray-900">{name}</code>
                       <button
@@ -176,7 +176,7 @@ export default function NameGenerator() {
                     </div>
                   ))}
                 </div>
-                {generatedNames.warnings && generatedNames.warnings.length > 0 && (
+                {Array.isArray(generatedNames.warnings) && generatedNames.warnings.length > 0 && (
                   <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded text-yellow-800 text-sm">
                     <strong>Warnungen:</strong>
                     <ul className="list-disc list-inside mt-1">

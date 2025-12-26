@@ -17,9 +17,10 @@ export default function ConfigManager() {
     setLoading(true);
     try {
       const data = await apiClient.getConfigs();
-      setConfigs(data);
+      setConfigs(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error('Fehler beim Laden der Konfigurationen:', error);
+      setConfigs([]);
     } finally {
       setLoading(false);
     }

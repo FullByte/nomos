@@ -53,7 +53,7 @@ export default function ApiKeyManager() {
       
       if (response.ok) {
         const data = await response.json();
-        setApiKeys(data);
+        setApiKeys(Array.isArray(data) ? data : []);
       } else if (response.status === 401) {
         // API-Key ungültig, entferne ihn
         localStorage.removeItem('temp_api_key');

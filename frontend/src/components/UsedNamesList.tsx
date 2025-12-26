@@ -26,9 +26,10 @@ export default function UsedNamesList() {
     setLoading(true);
     try {
       const data = await apiClient.getNames(filters);
-      setNames(data);
+      setNames(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error('Fehler beim Laden der Namen:', error);
+      setNames([]);
     } finally {
       setLoading(false);
     }

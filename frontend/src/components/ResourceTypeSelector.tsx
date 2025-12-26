@@ -20,8 +20,13 @@ export default function ResourceTypeSelector({
 
   useEffect(() => {
     apiClient.getResourceTypes()
-      .then(setResourceTypes)
-      .catch(console.error)
+      .then((data) => {
+        setResourceTypes(Array.isArray(data) ? data : []);
+      })
+      .catch((error) => {
+        console.error('Fehler beim Laden der Resource Types:', error);
+        setResourceTypes([]);
+      })
       .finally(() => setLoading(false));
   }, []);
 
